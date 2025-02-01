@@ -1,0 +1,237 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* Register - Login */
+
+.register-container {
+  background-color: #73ef79;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .form {
+    background-color: #f1fdf2;
+    border-radius: 1.5rem;
+    padding: 2rem;
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1.5rem;
+      gap: 1rem;
+
+      .app-name {
+        font-size: 2rem;
+        font-weight: bold;
+        font-style: italic;
+        color: #73ef79;
+      }
+
+      .regis-input {
+        padding: 0.8rem;
+        width: 18rem;
+        border: none;
+        border-radius: 1rem;
+      }
+
+      .sign-up {
+        background-color: #73ef79;
+        padding: 0.5rem;
+        width: 7rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 2rem;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .title {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      .login-text {
+        font-size: 1rem;
+        font-weight: 10;
+        color: #7fa481;
+      }
+    }
+  }
+}
+
+/* Main */
+.main-container {
+  background-color: #73ef79;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .wrapper {
+    background-color: #f1fdf2;
+    display: flex;
+    width: 70%;
+    height: 80%;
+    overflow: hidden;
+    border-radius: 0.8rem;
+
+    .sidebar {
+      flex: 1.1;
+      background-color: #094a0c;
+    }
+
+    .chat {
+      flex: 1.9;
+
+      .chat-info {
+        background-color: #c2e2c5;
+        height: 3.4rem;
+        font-size: 1.8rem;
+        padding-left: 1rem;
+        padding-top: 1rem;
+        font-weight: bold;
+      }
+    }
+
+    .navbar {
+      background-color: #8b988c;
+      display: flex;
+      height: 3.4rem;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+
+      .app-name {
+        color: #73ef79;
+        font-size: 1.2rem;
+        font-style: italic;
+      }
+
+      .user-name {
+        font-size: 1rem;
+        color: #f1fdf2;
+        font-weight: bold;
+        margin-left: 1rem;
+      }
+
+      .logout {
+        width: 3.5rem;
+        height: 1.8rem;
+        font-size: 0.8rem;
+        background-color: #73ef79;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+      }
+    }
+
+    .chats-container {
+      display: flex;
+      height: 3.8rem;
+      cursor: pointer;
+      gap: 0.8rem;
+      align-items: center;
+      padding-bottom: 1.2rem;
+      padding-top: 1.2rem;
+
+      .userImage {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        margin-left: 0.5rem;
+      }
+
+      .chats-name {
+        font-size: 1.5rem;
+        color: #73ef79;
+        font-weight: bold;
+      }
+
+      .chats-text {
+        font-size: 1rem;
+        font-weight: lighter;
+        color: #f1fdf2;
+      }
+
+      &:hover {
+        background-color: #000000;
+      }
+    }
+
+    .messages {
+      padding: 1rem;
+      height: calc(100% - 7rem);
+      background-color: #cef7b9;
+      overflow: scroll;
+
+      .message {
+        display: flex;
+        padding-bottom: 1.2rem;
+        gap: 1rem;
+
+        .message-info {
+          display: flex;
+          flex-direction: column;
+          max-width: 80%;
+          justify-content: center;
+
+          img {
+            width: 2rem;
+            height: 2rem;
+          }
+
+          span {
+            font-size: 1rem;
+            font-weight: lighter;
+          }
+        }
+
+        p {
+          background-color: #f1fdf2;
+          padding: 1rem;
+          border-radius: 0 0.75rem 0.75rem 0.75rem;
+        }
+
+        &.owner {
+          flex-direction: row-reverse;
+
+          p {
+            background-color: #73ef79;
+            border-radius: 0.75rem 0 0.75rem 0.75rem;
+          }
+        }
+      }
+    }
+
+    .input {
+      background-color: #fff;
+      padding: 0.5rem;
+      display: flex;
+      justify-content: center;
+
+      input {
+        outline: none;
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: none;
+        width: 100%;
+        font-weight: 300;
+      }
+
+      .send {
+        background-color: #73ef79;
+        height: 2.5rem;
+        width: 4rem;
+        font-size: 1.2rem;
+        padding: 0.5rem;
+        font-weight: 500;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
