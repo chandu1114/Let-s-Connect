@@ -21,7 +21,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-size: 1.5rem;
       gap: 1rem;
 
       .app-name {
@@ -36,6 +35,14 @@
         width: 18rem;
         border: none;
         border-radius: 1rem;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 1.5rem;
+        gap: 1rem;
       }
 
       .sign-up {
