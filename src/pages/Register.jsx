@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../lib/firebase";
 import { doc, setDoc } from "firebase/firestore";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 
 function Register() {
   const navigate = useNavigate();
@@ -57,7 +57,9 @@ function Register() {
             />
             <button className="sign-up">Sign up</button>
           </form>
-          <p className="login-text">already have account ? Login</p>
+          <p className="login-text">
+            already have account ? <Link to="/login">Login</Link>
+          </p>
         </div>
       </div>
     </div>
