@@ -9,6 +9,7 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
+      console.log("Auth", user);
       setCurUser(user);
       console.log(user);
     });

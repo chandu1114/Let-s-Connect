@@ -16,7 +16,7 @@ function Register() {
       const res = await createUserWithEmailAndPassword(auth, email, password);
 
       await setDoc(doc(db, "users", res.user.uid), {
-        username: name,
+        displayName: name,
         email,
         id: res.user.uid,
       });
