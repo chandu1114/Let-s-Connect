@@ -4,7 +4,7 @@ import Messages from "./Messages";
 function Chat() {
   return (
     <div className="chat">
-      <div className="chat-info">Gupta</div>
+      <div className="chat-info">gupta</div>
       <Messages />
       <Input />
     </div>

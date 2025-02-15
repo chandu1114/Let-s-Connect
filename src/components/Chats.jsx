@@ -3,11 +3,52 @@ import userImg from "../images/user.jpg";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { db } from "../lib/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  serverTimestamp,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 
 function Chats() {
   const [users, setUsers] = useState([]);
   const { curUser } = useContext(AuthContext);
+
+  const handleSelect = async (user) => {
+    const combinedId =
+      curUser.uid > user.id ? curUser.uid + user.id : user.id + curUser.uid;
+    console.log(curUser.uid, user.id);
+
+    try {
+      const res = await getDoc(doc(db, "chats", combinedId));
+      console.log("user", user);
+      console.log("curUser", curUser);
+      if (!res.exists()) {
+        await setDoc(doc(db, "chats", combinedId), { messages: [] });
+
+        await updateDoc(doc(db, "userChats", curUser.uid), {
+          [combinedId + ".userInfo"]: {
+            uid: user.id,
+            displayName: user.displayName,
+          },
+          [combinedId + ".date"]: serverTimestamp(),
+        });
+
+        await updateDoc(doc(db, "userChats", user.id), {
+          [combinedId + ".userInfo"]: {
+            uid: curUser.uid,
+            displayName: curUser.email.split("@")[0],
+          },
+          [combinedId + ".date"]: serverTimestamp(),
+        });
+      }
+    } catch (err) {
+      alert(err);
+    }
+  };
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -29,7 +70,7 @@ function Chats() {
 
         setUsers(filterdUsers2);
       } catch (error) {
-        console.log(error);
+        alert(error);
       }
     };
     fetchUsers();
@@ -38,7 +79,7 @@ function Chats() {
   return (
     <>
       {users.map((user) => (
-        <div key={user.id}>
+        <div key={user.id} onClick={() => handleSelect(user)}>
           <div className="chats-container">
             <img src={userImg} alt="userImage" className="userImage" />
             <div className="chats">
