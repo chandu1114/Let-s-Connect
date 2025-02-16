@@ -1,14 +1,28 @@
+import { useContext, useEffect, useRef } from "react";
 import userImg from "../images/user.jpg";
+import { AuthContext } from "../context/AuthContext";
 
-function Message() {
+function Message({ message }) {
+  const { curUser } = useContext(AuthContext);
+
+  const ref = useRef();
+
+  useEffect(() => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  }, [message]);
+
+  console.log(message);
   return (
-    <div className="message owner">
+    <div
+      ref={ref}
+      className={`message ${message.senderId === curUser.uid && "owner"}`}
+    >
       <div className="message-info">
         <img src={userImg} alt="userImg" />
         <span>Just now</span>
       </div>
       <div className="messsage-content">
-        <p>Hello, how are you?</p>
+        <p>{message.text}</p>
       </div>
     </div>
   );
